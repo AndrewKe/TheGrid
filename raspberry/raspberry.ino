@@ -331,10 +331,9 @@ void flow(){
           state = 1;  
         }
         if(stripStates[i] == BLANK){
-          Serial.println("gain");
-          pulseColor(color,5,i);
+          pulseColor(color,7,i);
         }else{
-          pulseColor(BLANK, 5, i); 
+          pulseColor(BLANK, 7, i); 
         }
         
       } 
@@ -360,7 +359,7 @@ void flow(){
 }
 
 
-void flowDebugLight(){
+void flowDebugLight(){ 
   if(state%2 == 0){
     digitalWrite(13,HIGH); 
   }else{
@@ -490,6 +489,9 @@ void processMessages(){
       if (gameMode == 6) { // TEST COMMUNICATION MODE
         flashLight(i, CYAN);
       }
+    }
+    if ( i == 3 || i == 4) {
+      continue;
     }
     if(values[0] == 5 && num >= 2){
       newState = true;
