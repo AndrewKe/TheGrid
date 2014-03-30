@@ -14,9 +14,7 @@
     -VERY IMPORTANT Changes to "Discard mechanism"
       ~aditional "break comment"
       ~no more annoying print messages
-    
-  KNOWN BUG ALERT!
-    -Flow NO LONGER HAS COLOR DETECITON!?!
+
   
 */
 
@@ -361,9 +359,6 @@ void flow(){
   //delay(20);
 }
 
-void prepFlow(){
-   
-}
 
 void flowDebugLight(){
   if(state%2 == 0){
@@ -378,6 +373,7 @@ void initFlow(){
     states[i] = 0;
     colors[i] = 0;
   }
+  color = stripStates[CIRCLE];
   if(digitalRead(button)){
     state = 3;
     //turnOn(CIRCLE, color);
@@ -530,12 +526,12 @@ void processMessages(){
 
          if(values[4]==0){
             Serial.println("Option 1: Light Center");
-            turnOn(CIRCLE, numberToColor(values[3]));
-            //pulseColor(numberToColor(values[3]),5,CIRCLE);
+            //turnOn(CIRCLE, numberToColor(values[3]));
+            pulseColor(numberToColor(values[3]),5,CIRCLE);
          }else if(values[4]<=4){
             Serial.println("Option2");
-            turnOn(values[4],numberToColor(values[3]));
-            //pulseColor(numberToColor(values[3]),5,values[4]);
+            //turnOn(values[4],numberToColor(values[3]));
+            pulseColor(numberToColor(values[3]),5,values[4]);
          }
          pushPixels();
          //color = numberToColor(values[3]);
